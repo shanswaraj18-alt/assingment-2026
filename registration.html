@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Register - G.L. Bajaj Online Book Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOP HEADER -->
+  <header class="top-header">
+    <div class="logo">
+    <img src="https://www.glbitm.org/Uploads/image/846imguf_LogoGLBajaj.jpg" class="logo" alt="logo">    
+    </div>
+    <div class="header-text">
+      <h1>G.L. Bajaj Online Book Store</h1>
+      <nav>
+        <a href="webpage.html">Home</a> |
+        <a href="login.html">Login</a> |
+        <a href="registration.html">Register</a> |
+        <a href="catalog.html">Catalogue</a> |
+        <a href="cart.html">Cart</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- MIDDLE SECTION: SIDEBAR + REGISTRATION FORM -->
+  <div class="middle-section">
+
+    <aside class="sidebar">
+      <h2>Categories</h2>
+      <button>CSE Books</button>
+      <button>ECE Books</button>
+      <button>Mechanical Books</button>
+      <button>IT Books</button>
+    </aside>
+
+    <main class="main-content">
+      <div class="login-box">
+        <h2>Registration Page</h2>
+        <form id="registrationForm" onsubmit="return validateRegistrationForm()">
+
+          <!-- 1. Name -->
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name (letters only, minimum 6)" autocomplete="name" required>
+
+          <!-- 2. Password -->
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" placeholder="Minimum 6 characters" minlength="6" autocomplete="new-password" required>
+
+          <!-- 3. Email -->
+          <label for="email">E-mail ID</label>
+          <input type="text" id="email" name="email" placeholder="Enter your email (e.g. name@example.com)" autocomplete="email" required>
+
+          <!-- 4. Phone Number -->
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" name="phone" placeholder="Enter exactly 10 digits" maxlength="10" inputmode="numeric" autocomplete="tel" required>
+
+          <!-- 5. Sex -->
+          <label>Sex</label>
+          <input type="radio" name="sex" value="male" required> Male
+          <input type="radio" name="sex" value="female"> Female
+          <input type="radio" name="sex" value="other"> Other
+
+          <!-- 6. Date of Birth -->
+          <label>Date of Birth</label>
+          <select id="dobDay" name="dobDay" required>
+            <option value="">Day</option>
+            <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+            <option>6</option><option>7</option><option>8</option><option>9</option><option>10</option>
+          </select>
+          <select id="dobMonth" name="dobMonth" required>
+            <option value="">Month</option>
+            <option>January</option><option>February</option><option>March</option>
+            <option>April</option><option>May</option><option>June</option>
+            <option>July</option><option>August</option><option>September</option>
+            <option>October</option><option>November</option><option>December</option>
+          </select>
+          <select id="dobYear" name="dobYear" required>
+            <option value="">Year</option>
+            <option>2005</option><option>2004</option><option>2003</option>
+            <option>2002</option><option>2001</option><option>2000</option>
+          </select>
+
+          <!-- 7. Languages Known -->
+          <label>Languages Known</label>
+          <input type="checkbox" name="lang" value="english"> English
+          <input type="checkbox" name="lang" value="telugu"> Telugu
+          <input type="checkbox" name="lang" value="hindi"> Hindi
+          <input type="checkbox" name="lang" value="tamil"> Tamil
+
+          <!-- 8. Address -->
+          <label for="address">Address</label>
+          <textarea id="address" rows="4" placeholder="Enter your address"></textarea>
+
+          <button type="submit">Register</button>
+
+        </form>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p>@Created by Shan Swaraj</p>
+    <p>Roll no. 2501920110339</p>
+  </footer>
+
+
+  <!-- Experiment 6 and 7: JavaScript form validation -->
+  <script>
+    function validateRegistrationForm() {
+      const nameField = document.getElementById("name");
+      const passwordField = document.getElementById("password");
+      const emailField = document.getElementById("email");
+      const phoneField = document.getElementById("phone");
+
+      const name = nameField.value.trim();
+      const password = passwordField.value;
+      const email = emailField.value.trim();
+      const phone = phoneField.value.trim();
+
+      // Experiment 6: Name must contain alphabets only and be at least 6 characters.
+      if (!/^[A-Za-z]{6,}$/.test(name)) {
+        alert("Name must contain only alphabets and must be at least 6 characters long.");
+        nameField.focus();
+        return false;
+      }
+
+      // Experiment 6: Password must contain at least 6 characters.
+      if (password.length < 6) {
+        alert("Password must be at least 6 characters long.");
+        passwordField.focus();
+        return false;
+      }
+
+      // Experiment 7: Email must follow name@domain.com format.
+      if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$/.test(email)) {
+        alert("Enter a valid email in the format name@domain.com.");
+        emailField.focus();
+        return false;
+      }
+
+      // Experiment 7: Phone number must contain exactly 10 digits.
+      if (!/^[0-9]{10}$/.test(phone)) {
+        alert("Phone number must contain exactly 10 digits, with no spaces or symbols.");
+        phoneField.focus();
+        return false;
+      }
+
+      alert("Validation successful! This is a static practical; details are not saved.");
+      return false;
+    }
+  </script>
+</body>
+</html>

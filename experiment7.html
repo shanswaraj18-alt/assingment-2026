@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Experiment 7 - JavaScript Validation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top-header"><div class="header-text"><h1>Experiment 7</h1><nav><a href="webpage.html">Home</a> | <a href="experiment6.html">Experiment 6</a> | <a href="experiment7.html">Experiment 7</a> | <a href="experiment8.html">Experiment 8</a> | <a href="experiment9.html">Experiment 9</a></nav></div></header>
+  <main class="main-content">
+    <section class="login-box">
+      <h2>JavaScript Validation: Email and Phone</h2>
+      <p>Email must follow name@domain.com format; phone must contain exactly 10 digits.</p>
+      <form onsubmit="return validateExp7()">
+        <label for="exp7email">E-mail ID</label><input type="text" id="exp7email" placeholder="name@domain.com" required>
+        <label for="exp7phone">Phone Number</label><input type="text" id="exp7phone" inputmode="numeric" maxlength="10" placeholder="10 digits" required>
+        <button type="submit">Validate</button>
+      </form>
+      <p id="exp7result" aria-live="polite"></p>
+    </section>
+  </main>
+  <script>
+    function validateExp7() {
+      const email = document.getElementById("exp7email").value.trim();
+      const phone = document.getElementById("exp7phone").value.trim();
+      const result = document.getElementById("exp7result");
+      if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$/.test(email)) { result.textContent = "Invalid email. Example of correct format: name@domain.com"; result.style.color = "red"; return false; }
+      if (!/^[0-9]{10}$/.test(phone)) { result.textContent = "Invalid phone number. Enter exactly 10 digits."; result.style.color = "red"; return false; }
+      result.textContent = "Experiment 7 passed: email and phone are valid."; result.style.color = "green";
+      return false;
+    }
+  </script>
+</body>
+</html>

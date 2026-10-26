@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Experiment 6 - JavaScript Validation</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top-header"><div class="header-text"><h1>Experiment 6</h1><nav><a href="webpage.html">Home</a> | <a href="experiment6.html">Experiment 6</a> | <a href="experiment7.html">Experiment 7</a> | <a href="experiment8.html">Experiment 8</a> | <a href="experiment9.html">Experiment 9</a></nav></div></header>
+  <main class="main-content">
+    <section class="login-box">
+      <h2>JavaScript Validation: Name and Password</h2>
+      <p>As required by the syllabus: name contains alphabets only and is at least 6 characters; password is at least 6 characters.</p>
+      <form onsubmit="return validateExp6()">
+        <label for="exp6name">Name</label><input type="text" id="exp6name" required>
+        <label for="exp6password">Password</label><input type="password" id="exp6password" required>
+        <button type="submit">Validate</button>
+      </form>
+      <p id="exp6result" aria-live="polite"></p>
+    </section>
+  </main>
+  <script>
+    function validateExp6() {
+      const name = document.getElementById("exp6name").value.trim();
+      const password = document.getElementById("exp6password").value;
+      const result = document.getElementById("exp6result");
+      if (!/^[A-Za-z]{6,}$/.test(name)) { result.textContent = "Invalid name: use letters only, minimum 6 characters."; result.style.color = "red"; return false; }
+      if (password.length < 6) { result.textContent = "Invalid password: minimum 6 characters."; result.style.color = "red"; return false; }
+      result.textContent = "Experiment 6 passed: name and password are valid."; result.style.color = "green";
+      return false;
+    }
+  </script>
+</body>
+</html>
